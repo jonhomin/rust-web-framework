@@ -1,11 +1,4 @@
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Box,
-  Avatar,
-} from "@mui/material";
+import { AppBar, Toolbar, IconButton, Typography, Box } from "@mui/material";
 import {
   Menu as MenuIcon,
   Settings as SettingsIcon,
@@ -14,9 +7,14 @@ import {
 interface AdminHeaderProps {
   onToggleSidebar?: () => void;
   isSidebarOpen?: boolean;
+  isMobile?: boolean;
 }
 
-const AdminHeader = ({ onToggleSidebar, isSidebarOpen }: AdminHeaderProps) => {
+const AdminHeader = ({
+  onToggleSidebar,
+  isSidebarOpen,
+  isMobile,
+}: AdminHeaderProps) => {
   return (
     <AppBar
       position="fixed"
@@ -24,12 +22,18 @@ const AdminHeader = ({ onToggleSidebar, isSidebarOpen }: AdminHeaderProps) => {
         backgroundColor: "white",
         color: "text.primary",
         boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1)",
-        width: `calc(100% - ${isSidebarOpen ? 260 : 0}px)`,
-        ml: `${isSidebarOpen ? 260 : 0}px`,
+        width: {
+          xs: "100%",
+          md: `calc(100% - ${isSidebarOpen && !isMobile ? 260 : 0}px)`,
+        },
+        ml: {
+          xs: 0,
+          md: isSidebarOpen && !isMobile ? "260px" : 0,
+        },
         transition: "all 0.3s ease",
       }}
     >
-      <Toolbar>
+      <Toolbar sx={{ minHeight: { xs: 56, sm: 64 } }}>
         <IconButton
           edge="start"
           color="inherit"
@@ -42,24 +46,23 @@ const AdminHeader = ({ onToggleSidebar, isSidebarOpen }: AdminHeaderProps) => {
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+        <Box
+          sx={{ display: "flex", alignItems: "center", gap: { xs: 1, sm: 2 } }}
+        >
           <IconButton color="inherit">
             <SettingsIcon />
           </IconButton>
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <Typography variant="body2" sx={{ fontWeight: 500 }}>
-              Yamada Tarou
-            </Typography>
-            <Avatar
+            <Typography
+              variant="body2"
               sx={{
-                width: 32,
-                height: 32,
-                backgroundColor: "primary.main",
+                fontWeight: 500,
+                display: { xs: "none", sm: "block" },
               }}
             >
-              YT
-            </Avatar>
+              Yamada Tarou
+            </Typography>
           </Box>
         </Box>
       </Toolbar>
