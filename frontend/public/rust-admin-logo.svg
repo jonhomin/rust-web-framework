@@ -1,0 +1,10 @@
+<svg viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+  <path d="M45 30c0-8.284 6.716-15 15-15 8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15-8.284 0-15-6.716-15-15z" fill="#B7410E"/>
+  <path d="M48 30c0-6.627 5.373-12 12-12s12 5.373 12 12-5.373 12-12 12S48 36.627 48 30z" fill="#FF4B00"/>
+  <circle cx="60" cy="30" r="2" fill="#B7410E"/>
+  <circle cx="60" cy="30" r="1" fill="white"/>
+  <text x="85" y="38" fill="#2D3748" font-family="Arial" font-weight="bold" font-size="24">
+    Rust Admin
+  </text>
+  <path d="M85 42h120" stroke="#CBD5E0" stroke-width="0.5"/>
+</svg>
