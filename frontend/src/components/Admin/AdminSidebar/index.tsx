@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import {
   Dashboard as DashboardIcon,
-  PieChart as StatisticsIcon,
+  Person as PersonIcon,
 } from "@mui/icons-material";
 import { AdminSidebarItem } from "./AdminSidebarItem";
 import { AdminSidebarSection } from "./AdminSidebarSection";
@@ -43,11 +43,11 @@ const AdminSidebar = () => {
           <AdminSidebarItem icon={<DashboardIcon />} title="Home" to="/admin" />
         </AdminSidebarSection>
 
-        <AdminSidebarSection title="Widget">
+        <AdminSidebarSection title="Users">
           <AdminSidebarItem
-            icon={<StatisticsIcon />}
-            title="Statistics"
-            to="/admin/statistics"
+            icon={<PersonIcon />}
+            title="User List"
+            to="/admin/users"
           />
         </AdminSidebarSection>
       </Box>
