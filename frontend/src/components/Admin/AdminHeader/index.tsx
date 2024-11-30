@@ -1,9 +1,22 @@
-import { AppBar, Toolbar, IconButton, Typography, Box } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Box,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import {
   Menu as MenuIcon,
   Settings as SettingsIcon,
+  LockReset as LockResetIcon,
+  Logout as LogoutIcon,
 } from "@mui/icons-material";
 import { useAdminTitle } from "../../../contexts/AdminTitleContext";
+import { useState } from "react";
 
 interface AdminHeaderProps {
   onToggleSidebar?: () => void;
@@ -17,6 +30,15 @@ const AdminHeader = ({
   isMobile,
 }: AdminHeaderProps) => {
   const { title } = useAdminTitle();
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const handleSettingsClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <AppBar
@@ -63,9 +85,36 @@ const AdminHeader = ({
         <Box
           sx={{ display: "flex", alignItems: "center", gap: { xs: 1, sm: 2 } }}
         >
-          <IconButton color="inherit">
+          <IconButton
+            color="inherit"
+            onClick={handleSettingsClick}
+            aria-controls="settings-menu"
+            aria-haspopup="true"
+          >
             <SettingsIcon />
           </IconButton>
+
+          <Menu
+            id="settings-menu"
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+            transformOrigin={{ horizontal: "right", vertical: "top" }}
+            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+          >
+            <MenuItem onClick={handleClose}>
+              <ListItemIcon>
+                <LockResetIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>パスワード変更</ListItemText>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItemIcon>
+                <LogoutIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>ログアウト</ListItemText>
+            </MenuItem>
+          </Menu>
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <Typography
