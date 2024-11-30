@@ -3,6 +3,7 @@ import {
   Menu as MenuIcon,
   Settings as SettingsIcon,
 } from "@mui/icons-material";
+import { useAdminTitle } from "../../../contexts/AdminTitleContext";
 
 interface AdminHeaderProps {
   onToggleSidebar?: () => void;
@@ -15,6 +16,8 @@ const AdminHeader = ({
   isSidebarOpen,
   isMobile,
 }: AdminHeaderProps) => {
+  const { title } = useAdminTitle();
+
   return (
     <AppBar
       position="fixed"
@@ -43,6 +46,17 @@ const AdminHeader = ({
         >
           <MenuIcon />
         </IconButton>
+
+        <Typography
+          variant="h6"
+          component="h1"
+          sx={{
+            fontSize: { xs: "1.1rem", sm: "1.25rem" },
+            fontWeight: 600,
+          }}
+        >
+          {title}
+        </Typography>
 
         <Box sx={{ flexGrow: 1 }} />
 

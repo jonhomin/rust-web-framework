@@ -5,6 +5,8 @@ import {
   ListItemText,
 } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
+import { useAdminTitle } from "../../../contexts/AdminTitleContext";
+import { useEffect } from "react";
 
 interface AdminSidebarItemProps {
   icon: React.ReactNode;
@@ -19,6 +21,13 @@ export const AdminSidebarItem = ({
 }: AdminSidebarItemProps) => {
   const location = useLocation();
   const isActive = location.pathname === to;
+  const { setTitle } = useAdminTitle();
+
+  useEffect(() => {
+    if (isActive) {
+      setTitle(title);
+    }
+  }, [isActive, title, setTitle]);
 
   return (
     <ListItem disablePadding>
