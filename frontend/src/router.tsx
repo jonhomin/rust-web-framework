@@ -4,6 +4,8 @@ import { AdminLayout } from "./layouts/AdminLayout";
 import { Home } from "./pages/public/Home";
 import { AdminHome } from "./pages/admin/AdminHome";
 import { AdminUserList } from "./pages/admin/AdminUserList";
+import { AdminAuthLayout } from "./layouts/AdminAuthLayout";
+import { AdminLogin } from "./pages/admin/auth/AdminLogin";
 
 export const Router = () => {
   return (
@@ -14,12 +16,15 @@ export const Router = () => {
           <Route path="/" element={<Home />} />
         </Route>
 
+        {/* Admin auth routes */}
+        <Route path="/admin/auth" element={<AdminAuthLayout />}>
+          <Route path="login" element={<AdminLogin />} />
+        </Route>
+
         {/* Admin routes */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<AdminHome />} />
-        </Route>
-        <Route path="/admin/users" element={<AdminLayout />}>
-          <Route index element={<AdminUserList />} />
+          <Route path="users" element={<AdminUserList />} />
         </Route>
       </Routes>
     </BrowserRouter>
