@@ -5,7 +5,7 @@ PROJECT_NAME = your-project-name
 # Tree表示用の除外パターン
 TREE_IGNORE = node_modules|dist|.git|.DS_Store|build
 
-.PHONY: help build up down restart logs clean ps tree
+.PHONY: help build up down restart logs clean ps tree restartf restartb rebuildf rebuildb
 
 # ヘルプコマンド
 help:
@@ -34,6 +34,24 @@ down:
 # コンテナの再起動
 restart:
 	$(DOCKER_COMPOSE) restart
+
+# フロントエンドの再起動
+restartf:
+	$(DOCKER_COMPOSE) restart frontend
+
+# バックエンドの再起動
+restartb:
+	$(DOCKER_COMPOSE) restart backend
+
+# フロントエンドのリビルドと再起動
+rebuildf:
+	$(DOCKER_COMPOSE) build frontend
+	$(DOCKER_COMPOSE) up -d frontend
+
+# バックエンドのリビルドと再起動
+rebuildb:
+	$(DOCKER_COMPOSE) build backend
+	$(DOCKER_COMPOSE) up -d backend
 
 # ログの表示
 logs:
