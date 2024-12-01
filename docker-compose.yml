@@ -14,5 +14,14 @@ services:
       - NODE_ENV=development
     command: npm run dev
 
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/app
+
 volumes:
   frontend_node_modules:
