@@ -71,3 +71,17 @@ tree-dir:
 		echo "treeコマンドがインストールされていません。"; \
 		echo "Homebrewでインストールする場合: brew install tree"; \
 	fi
+
+treef:
+	@if command -v tree > /dev/null; then \
+		tree -I "$(TREE_IGNORE)|target|Cargo.lock" -a -L 4 frontend; \
+	else \
+		echo "treeコマンドが必要です: brew install tree"; \
+	fi
+
+treeb:
+	@if command -v tree > /dev/null; then \
+		tree -I "$(TREE_IGNORE)|target|Cargo.lock" -a -L 4 backend; \
+	else \
+		echo "treeコマンドが必要です: brew install tree"; \
+	fi
