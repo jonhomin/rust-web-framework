@@ -3,7 +3,7 @@ DOCKER_COMPOSE = docker compose
 PROJECT_NAME = your-project-name
 
 # Tree表示用の除外パターン
-TREE_IGNORE = node_modules|dist|.git|.DS_Store|build|target|Cargo.lock
+TREE_IGNORE = node_modules|dist|.git|.DS_Store|build|target|Cargo.lock|migrations
 
 .PHONY: help build up down restart logs clean ps tree restartf restartb rebuildf rebuildb \
         migrate-create migrate-up migrate-down migrate-redo treef treeb clean-node-modules tree-dir db-shell
