@@ -6,7 +6,7 @@ PROJECT_NAME = your-project-name
 TREE_IGNORE = node_modules|dist|.git|.DS_Store|build|target|Cargo.lock
 
 .PHONY: help build up down restart logs clean ps tree restartf restartb rebuildf rebuildb \
-        migrate-create migrate-up migrate-down migrate-redo treef treeb clean-node-modules tree-dir
+        migrate-create migrate-up migrate-down migrate-redo treef treeb clean-node-modules tree-dir db-shell
 
 # ヘルプコマンド
 help:

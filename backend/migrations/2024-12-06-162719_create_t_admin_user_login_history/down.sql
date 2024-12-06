@@ -1,0 +1,1 @@
+DROP TABLE t_admin_user_login_histories;
