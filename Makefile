@@ -136,7 +136,7 @@ migrate-create:
 
 # マイグレーション実行
 migrate-up:
-	$(DOCKER_COMPOSE) exec backend bash -c 'DATABASE_URL=mysql://root:$(DB_ROOT_PASSWORD)@db:3306/$(DB_NAME) diesel migration run'
+	$(DOCKER_COMPOSE) exec backend bash -c 'DATABASE_URL=mysql://root:$(DB_ROOT_PASSWORD)@db:3306/$(DB_NAME) diesel migration run && diesel print-schema > src/schema.rs'
 
 migrate-down:
 	$(DOCKER_COMPOSE) exec backend bash -c 'DATABASE_URL=mysql://root:$(DB_ROOT_PASSWORD)@db:3306/$(DB_NAME) diesel migration revert'
